@@ -14,14 +14,14 @@ class Application():
         self.width = width
         self.height = height
         self.root = Tk()
-        icon_path = "App\\logo.jfif"
+        icon_path = "logo.jfif"
         load = Image.open(icon_path)
         render = ImageTk.PhotoImage(load)
         self.root.iconphoto(False, render)
         self.root.geometry(f"{self.width}x{self.height}")
         self.root.minsize(640, 360)
         self.root.title("ESN Visualization App")
-        self.tmp_path = ".\\tmp"
+        self.tmp_path = os.path.join(".", "tmp")
         if backend == "pyESN":
             self.backend = pyESNBackend(self.tmp_path)
         else:
@@ -62,8 +62,8 @@ class Application():
     def create_tmp(self):
         if not os.path.exists(self.tmp_path):
             os.mkdir(self.tmp_path)
-            os.mkdir(self.tmp_path + "\\train")
-            os.mkdir(self.tmp_path + "\\test")
+            os.mkdir(os.path.join(self.tmp_path, "train"))
+            os.mkdir(os.path.join(self.tmp_path, "test"))
 
     def delete_tmp(self):
         if not os.path.exists(self.tmp_path):

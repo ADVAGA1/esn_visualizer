@@ -78,7 +78,7 @@ class VisualizationFrame(tk.Frame):
 class CreateWindow():
     def __init__(self, parent, backend):
         self.window = tk.Toplevel(parent)
-        icon_path = "App\\logo.jfif"
+        icon_path = "logo.jfif"
         load = Image.open(icon_path)
         render = ImageTk.PhotoImage(load)
         self.window.iconphoto(False, render)
@@ -311,7 +311,7 @@ class CreateWindowReservoirPy(CreateWindow):
 
         # Activation
         self.act_val = StringVar()
-        act_label = tk.Label(self.window, text="Units")
+        act_label = tk.Label(self.window, text="Activation")
         act_label.grid(column=0, row=8, padx=5, pady=5)
         act_box = ttk.Combobox(self.window, values=["tanh", "relu", "sigmoid", "softmax"], textvariable=self.act_val)
         act_box.set("tanh")
@@ -437,7 +437,7 @@ class CreateWindowReservoirPy(CreateWindow):
 class TrainWindow():
     def __init__(self, parent, backend):
         self.window = tk.Toplevel(parent)
-        icon_path = "App\\logo.jfif"
+        icon_path = "logo.jfif"
         load = Image.open(icon_path)
         render = ImageTk.PhotoImage(load)
         self.window.iconphoto(False, render)

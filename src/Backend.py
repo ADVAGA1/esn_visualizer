@@ -149,7 +149,7 @@ class ReservoirpyBackend():
         return self.get_images(which)
     
     def get_images(self, which):
-        self.image_files = [f for f in os.listdir(self.tmp_path + f"\\{which}") if f.lower().endswith(('png'))]
+        self.image_files = [f for f in os.listdir(os.path.join(self.tmp_path, f"{which}")) if f.lower().endswith(('png'))]
         sort_nicely(self.image_files)
         return self.image_files
 
@@ -488,6 +488,7 @@ def save_figures_paralell(shared_objects, state):
     nx.draw_networkx_labels(graph, pos, font_size=10)
     _ = ax.axis("off")
     plt.legend(handles=legend_elements, loc='upper right')
-    plt.savefig(f"{tmp_path}\\{which}\\{state}.png")
+    path = os.path.join(tmp_path, which)
+    plt.savefig(os.path.join(path, f"{state}.png"))
     plt.close()
     return node_colors
